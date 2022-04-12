@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="SummaryLambdas sandbox bypass exists in fusionauth, which can lead to remote code execution. FusionAuth is using the Nashorn JavaScript engine to compile and execute lambdas functions. Although fusion">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FusionAuth Remote code execution via Lambdas Sandbox bypass">
+<meta property="og:title" content="[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass">
 <meta property="og:url" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/index.html">
 <meta property="og:site_name" content="happyhacking-k Blog">
 <meta property="og:description" content="SummaryLambdas sandbox bypass exists in fusionauth, which can lead to remote code execution. FusionAuth is using the Nashorn JavaScript engine to compile and execute lambdas functions. Although fusion">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/9.png">
 <meta property="og:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/10.png">
 <meta property="article:published_time" content="2022-04-08T15:41:33.000Z">
-<meta property="article:modified_time" content="2022-04-10T17:17:48.916Z">
+<meta property="article:modified_time" content="2022-04-12T14:34:52.512Z">
 <meta property="article:author" content="HEXO">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/1.png">
@@ -47,7 +47,7 @@
         
     
     <!-- title -->
-    <title>FusionAuth Remote code execution via Lambdas Sandbox bypass</title>
+    <title>[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass</title>
     <!-- styles -->
     
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
@@ -142,15 +142,15 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&text=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&is_video=false&description=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=FusionAuth Remote code execution via Lambdas Sandbox bypass&body=Check out this article: http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&name=FusionAuth Remote code execution via Lambdas Sandbox bypass&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&text=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&is_video=false&description=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass&body=Check out this article: http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&name=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -167,7 +167,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        FusionAuth Remote code execution via Lambdas Sandbox bypass
+        [Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass
     </h1>
 
 
@@ -237,8 +237,8 @@
 &#125;
 </code></pre>
 <p>The fusionauth security team discussed that it’s not issue with fusionauth, and replied that “Similarly, with Nashorn, it appears that they also are the primary issue because they provide access to the context, which also allows RCE. We are also moving off Nashorn in the next few months and will work to ensure that our new JavaScript engine provides better sandboxing.”</p>
-<h1 id="Coordinated-Disclosure-Timeline"><a href="#Coordinated-Disclosure-Timeline" class="headerlink" title="Coordinated Disclosure Timeline"></a>Coordinated Disclosure Timeline</h1><p>2021-10-01: Report sent to <a href="mailto:&#115;&#101;&#x63;&#x75;&#114;&#105;&#116;&#121;&#x40;&#102;&#x75;&#115;&#105;&#111;&#110;&#x61;&#x75;&#x74;&#104;&#x2e;&#x69;&#111;">&#115;&#101;&#x63;&#x75;&#114;&#105;&#116;&#121;&#x40;&#102;&#x75;&#115;&#105;&#111;&#110;&#x61;&#x75;&#x74;&#104;&#x2e;&#x69;&#111;</a><br>2022-01-14: Reply from <a href="mailto:&#115;&#x65;&#99;&#x75;&#x72;&#x69;&#116;&#121;&#64;&#x66;&#x75;&#x73;&#x69;&#111;&#110;&#97;&#x75;&#x74;&#104;&#46;&#x69;&#x6f;">&#115;&#x65;&#99;&#x75;&#x72;&#x69;&#116;&#121;&#64;&#x66;&#x75;&#x73;&#x69;&#111;&#110;&#97;&#x75;&#x74;&#104;&#46;&#x69;&#x6f;</a> that it’s not issue with FusionAuth, and offer me a $500 bounty.<br>2022-04-08: Request for disclosure details and approval to disclosure</p>
-<h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p>You can contact me at <a href="mailto:&#x68;&#97;&#x70;&#112;&#x79;&#104;&#97;&#99;&#x6b;&#x69;&#110;&#103;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#107;&#x2e;&#x69;&#116;">&#x68;&#97;&#x70;&#112;&#x79;&#104;&#97;&#99;&#x6b;&#x69;&#110;&#103;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#107;&#x2e;&#x69;&#116;</a>, please include a reference to my blog in any communication regarding this issue.</p>
+<h1 id="Coordinated-Disclosure-Timeline"><a href="#Coordinated-Disclosure-Timeline" class="headerlink" title="Coordinated Disclosure Timeline"></a>Coordinated Disclosure Timeline</h1><p>2021-10-01: Report sent to <a href="mailto:&#x73;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#64;&#102;&#117;&#115;&#x69;&#x6f;&#110;&#x61;&#x75;&#116;&#104;&#46;&#105;&#x6f;">&#x73;&#101;&#99;&#117;&#114;&#105;&#116;&#121;&#64;&#102;&#117;&#115;&#x69;&#x6f;&#110;&#x61;&#x75;&#116;&#104;&#46;&#105;&#x6f;</a><br>2022-01-14: Reply from <a href="mailto:&#x73;&#101;&#x63;&#x75;&#x72;&#105;&#x74;&#121;&#x40;&#x66;&#x75;&#x73;&#x69;&#x6f;&#110;&#97;&#117;&#x74;&#104;&#46;&#105;&#x6f;">&#x73;&#101;&#x63;&#x75;&#x72;&#105;&#x74;&#121;&#x40;&#x66;&#x75;&#x73;&#x69;&#x6f;&#110;&#97;&#117;&#x74;&#104;&#46;&#105;&#x6f;</a> that it’s not issue with FusionAuth, and offer me a $500 bounty.<br>2022-04-08: Request for disclosure details and approval to disclosure</p>
+<h1 id="Contact"><a href="#Contact" class="headerlink" title="Contact"></a>Contact</h1><p>You can contact me at <a href="mailto:&#104;&#x61;&#112;&#x70;&#121;&#x68;&#97;&#x63;&#107;&#x69;&#x6e;&#x67;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#x6f;&#107;&#46;&#x69;&#x74;">&#104;&#x61;&#112;&#x70;&#121;&#x68;&#97;&#x63;&#107;&#x69;&#x6e;&#x67;&#64;&#x6f;&#117;&#x74;&#x6c;&#111;&#x6f;&#107;&#46;&#x69;&#x74;</a>, please include a reference to my blog in any communication regarding this issue.</p>
 
   </div>
 </article>
@@ -277,15 +277,15 @@
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&text=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&is_video=false&description=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=FusionAuth Remote code execution via Lambdas Sandbox bypass&body=Check out this article: http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&name=FusionAuth Remote code execution via Lambdas Sandbox bypass&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&text=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&is_video=false&description=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass&body=Check out this article: http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&title=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://happyhacking-k.github.io/2022/04/08/FusionAuth-Remote-code-execution-via-Lambdas-Sandbox-bypass/&name=[Bounty:$250] FusionAuth Remote code execution via Lambdas Sandbox bypass&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
